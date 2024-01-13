@@ -1,0 +1,51 @@
+﻿<h1>{{ title }}</h1>
+
+<mat-progress-spinner *ngIf="loading" mode="indeterminate"></mat-progress-spinner>
+
+<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div fxLayout="row" fxLayoutGap="20px">
+        <mat-form-field appearance="fill" fxFlex>
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName">
+            <mat-error *ngIf="submitted && f.firstName.errors">
+                <span *ngIf="f.firstName.errors.required">First Name is required</span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName">
+            <mat-error *ngIf="submitted && f.lastName.errors">
+                <span *ngIf="f.lastName.errors.required">Last Name is required</span>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+        <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+            <mat-error *ngIf="submitted && f.username.errors">
+                <span *ngIf="f.username.errors.required">Username is required</span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Password <em *ngIf="id">(Leave blank to keep the same password)</em></mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            <mat-error *ngIf="submitted && f.password.errors">
+                <span *ngIf="f.password.errors.required">Password is required</span>
+                <span *ngIf="f.password.errors.minlength">Password must be at least 6 characters</span>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="mb-3">
+        <button mat-stroked-button color="primary" [disabled]="submitting" type="submit">
+            <mat-spinner *ngIf="submitting" diameter="20"></mat-spinner>
+            Save
+        </button>
+        <button mat-button [routerLink]="['/users']">Cancel</button>
+    </div>
+</form>
