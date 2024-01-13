@@ -50,8 +50,10 @@ Features:
 - Session management
 - Input validation
 
-API Endpoints
+API Endpoints:
+
 POST /api/register: Registers a new user.
+
 POST /api/login: Authenticates a user.
 
 Contributing
