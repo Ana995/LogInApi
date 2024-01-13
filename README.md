@@ -55,4 +55,5 @@ POST /api/register: Registers a new user.
 POST /api/login: Authenticates a user.
 
 Contributing
+
 Contributions to the project are welcome. Please follow the standard fork-pull request workflow.
